@@ -6,45 +6,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wordle</title>
     <link rel="stylesheet" href="wordle.css">
+    <script defer src="validwords.js"></script>
     <script defer src="wordle.js"></script>
 </head>
 <body>
-    <section id="first-guess">
+    <header>
+        <label></label>
+        <input id="guess-box" type="text" maxlength="5" style="text-transform:uppercase"/>
+    </header>
+    <section class="guess-row" id="first-guess">
         <div class="letter-box" id="letter-0"></div>
         <div id="letter-1"></div>
         <div id="letter-2"></div>
         <div id="letter-3"></div>
         <div id="letter-4"></div>
     </section>
-    <section id="second-guess">
+    <section class="guess-row" id="second-guess">
         <div class="letter-box" id="letter-0"></div>
         <div id="letter-1"></div>
         <div id="letter-2"></div>
         <div id="letter-3"></div>
         <div id="letter-4"></div>
     </section>
-    <section id="third-guess">
+    <section class="guess-row" id="third-guess">
         <div class="letter-box" id="letter-0"></div>
         <div id="letter-1"></div>
         <div id="letter-2"></div>
         <div id="letter-3"></div>
         <div id="letter-4"></div>
     </section>
-    <section id="fourth-guess">
+    <section class="guess-row" id="fourth-guess">
         <div class="letter-box" id="letter-0"></div>
         <div id="letter-1"></div>
         <div id="letter-2"></div>
         <div id="letter-3"></div>
         <div id="letter-4"></div>
     </section>
-    <section id="fifth-guess">
+    <section class="guess-row" id="fifth-guess">
         <div class="letter-box" id="letter-0"></div>
         <div id="letter-1"></div>
         <div id="letter-2"></div>
         <div id="letter-3"></div>
         <div id="letter-4"></div>
     </section>
-    <section id="final-guess">
+    <section class="guess-row" id="final-guess">
         <div class="letter-box" id="letter-0"></div>
         <div id="letter-1"></div>
         <div id="letter-2"></div>

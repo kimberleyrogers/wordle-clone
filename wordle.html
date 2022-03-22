@@ -8,10 +8,15 @@
     <link rel="stylesheet" href="wordle.css">
     <script defer src="validwords.js"></script>
     <script defer src="wordle.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <label></label>
+        <h1>Wordle</h1>
+        <h2 id="error-message"></h2>
+        <label>Guess...</label>
         <input id="guess-box" type="text" maxlength="5" style="text-transform:uppercase"/>
     </header>
     <section class="guess-row" id="guess-1">

@@ -6,37 +6,47 @@ const todaysWordleArray = todaysWordle.split("")
 console.log("today's Wordle array: " + todaysWordleArray)
 
 const guessLocation = document.getElementById("guess-box")
+const messageLocation = document.getElementById("error-message")
 let levelCounter = 1
 let userGuess = ""
 let userGuessArray = ""
+let winStatus = ""
 
 guessLocation.addEventListener('keypress', function(e) {
     //when enter key is pressed, take value as guess
     if(e.key == 'Enter') {
         userGuess = guessLocation.value.toUpperCase()
-        console.log("firstUserGuess is " + userGuess)
-        //check word is valid
-        if(validWords.includes(userGuess)) {
-            console.log("guessLocation.value is " + guessLocation.value)
-            const userGuessArray = userGuess.split("")
-            console.log("firstUserGuessArray is " + userGuessArray)
-            checkColours(userGuessArray, levelCounter)
-            //word is a valid guess so increase level counter
-            levelCounter++
-            console.log(levelCounter)
+        if(userGuess.length < 5) {
+            messageLocation.innerHTML = "5 letters yeah?"
             guessLocation.value = ""
         } else {
-            //MAKE THIS APPEAR IN THE HTML
-            console.log("Word wasn't valid")
-            guessLocation.value = ""
+            console.log("firstUserGuess is " + userGuess)
+            //check word is valid
+            if(validWords.includes(userGuess)) {
+                console.log("guessLocation.value is " + guessLocation.value)
+                // const userGuessArray = userGuess.split("")
+                // console.log("firstUserGuessArray is " + userGuessArray)
+                checkColours(userGuess, levelCounter)
+                //word is a valid guess so increase level counter
+                console.log(levelCounter)
+                guessLocation.value = ""
+                if (levelCounter == 6 && !(winStatus == "win")) {
+                    lose()
+                }
+                levelCounter++
+            } else {
+                messageLocation.innerHTML = "Do you need a dictionary?"
+                guessLocation.value = ""
+            }
         }
     }
 })
 
 //function for each valid guess - checks each letter against the wordle, adds to box and displays colour
-function checkColours(userGuessArray, levelCounter) {
-    console.log(userGuessArray, levelCounter)
+function checkColours(userGuess, levelCounter) {
     let letterPositionCounter = 0
+    const userGuessArray = userGuess.split("")
+    console.log("firstUserGuessArray is " + userGuessArray)
     for (const guessLetter of userGuessArray) {
         const location = document.getElementById("guess-" + levelCounter + "-letter-" + letterPositionCounter)
         location.innerHTML = guessLetter
@@ -51,18 +61,19 @@ function checkColours(userGuessArray, levelCounter) {
         letterPositionCounter++
     }
     //check if guessing was winning guess 
-    if(document.querySelectorAll('.match').length == 5){
-        console.log("You won!")
+    if(userGuess === todaysWordle){
+        win()
     }
 }
 
+function lose() {
+    console.log("You lost... what are you playing at?")
+    messageLocation.innerHTML = "You lost... what are you playing at?"
+    guessLocation.disabled = true
+}
 
-//if still broken just use classname = instead of classList.add
-//css for pattern on page
-
-//counter for each level attempted
-//when input is 5 letters, matches something on the acceptable list, store it and add one to the counter
-//
-//after counter hits 5, if not won, you lose
-//name rows in same style as level - so you can link counter, row, guess etc. altogether with an index
-//ideally one set of code for the round that can be reused - tricky to declare a lot of it inside the function
+function win() {
+    console.log("You won... nice one you fricking genius!")
+    messageLocation.innerHTML = "You won... nice one you fricking genius!"
+    guessLocation.disabled = true
+}

@@ -4,6 +4,13 @@ const wordleArray = ['HELLO', 'RESET', 'BEACH', 'SHARK'];
 const todaysWordle = wordleArray[Math.floor(Math.random() * wordleArray.length)]
 const todaysWordleArray = todaysWordle.split("")
 console.log("today's Wordle array: " + todaysWordleArray)
+let wordleArrayDupe = []
+
+function resetDuplicateWordleArray() {
+    for (i = 0; i < todaysWordleArray.length; i++) {
+        wordleArrayDupe[i] = todaysWordleArray[i]
+    }
+}
 
 const guessLocation = document.getElementById("guess-box")
 const messageLocation = document.getElementById("error-message")
@@ -46,23 +53,45 @@ guessLocation.addEventListener('keypress', function(e) {
 function checkColours(userGuess, levelCounter) {
     let letterPositionCounter = 0
     const userGuessArray = userGuess.split("")
+    // console.log("worldle array dupe before reset is " + wordleArrayDupe)
+    resetDuplicateWordleArray()
     console.log("firstUserGuessArray is " + userGuessArray)
+    console.log("wordleArrayDupe is " + wordleArrayDupe)
+
     for (const guessLetter of userGuessArray) {
+        console.log("guessLetter ", guessLetter)
+        
         const location = document.getElementById("guess-" + levelCounter + "-letter-" + letterPositionCounter)
         location.innerHTML = guessLetter
-        if (userGuessArray[letterPositionCounter] === todaysWordleArray[letterPositionCounter]) {
+
+        if(userGuessArray[letterPositionCounter] === wordleArrayDupe[letterPositionCounter]) {
+            
             location.classList.add('match')
-        } else if (todaysWordle.includes(guessLetter)) {
-            //if you can - try to resolve issue that Kenni identified
-            location.classList.add('partial-match')
+            wordleArrayDupe[letterPositionCounter] = '.'
+            console.log("yes it was green - " + userGuessArray[letterPositionCounter] + " and the wordle dupe array is " + wordleArrayDupe)
+            console.log(wordleArrayDupe[letterPositionCounter])
         } else {
-            location.classList.add('no-match')
+            wordleArrayDupeLetterPositionCounter = 0
+            for (let wordleDupeLetter of wordleArrayDupe) {
+                if(guessLetter == wordleDupeLetter) {
+                    location.classList.add('partial-match')
+                    console.log("guess letter is " + guessLetter)
+                    console.log("worldle dupe letter is " + wordleDupeLetter)
+                    wordleArrayDupe[wordleArrayDupeLetterPositionCounter] = '.'
+                    
+                    console.log("wordle dupe letter counter is " + wordleArrayDupeLetterPositionCounter)
+                    
+                    console.log("yes it was yellow - " + guessLetter + " and the wordle dupe array is " + wordleArrayDupe)
+                    break;
+                } 
+                wordleArrayDupeLetterPositionCounter++
+            }
         }
         letterPositionCounter++
-    }
-    //check if guessing was winning guess 
-    if(userGuess === todaysWordle){
-        win()
+        //check if guess was winning guess 
+        if(userGuess === todaysWordle){
+            win()
+        }
     }
 }
 
@@ -70,10 +99,12 @@ function lose() {
     console.log("You lost... what are you playing at?")
     messageLocation.innerHTML = "You lost... what are you playing at?"
     guessLocation.disabled = true
+    //add css styling for lose
 }
 
 function win() {
     console.log("You won... nice one you fricking genius!")
     messageLocation.innerHTML = "You won... nice one you fricking genius!"
     guessLocation.disabled = true
+    //add css styling for win
 }

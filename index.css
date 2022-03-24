@@ -1,0 +1,97 @@
+body {
+   
+    color: white;
+    font-size: 70px;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background: url(images/background-text.png), black;
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+}
+
+header {
+    margin: auto;
+}
+
+main {
+    background-color: black;
+    width: 100%;
+    display: grid;
+}
+
+footer {
+    max-width: 100px;
+    margin: auto;
+}
+
+h1 {
+    font-size: 70px;
+    margin-top: 15px;
+    margin-bottom: 0px;
+}
+
+.pink {
+    color: rgb(231, 53, 172);
+}
+
+.blue {
+    color: rgb(0, 183, 255);
+}
+
+h2 {
+    font-size: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#refresh {
+    height: 100px;
+    width: 100px;
+    border-radius: 45%;
+}
+
+button {
+    transition-duration: 0.4s;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+}
+  
+button:hover {
+    background-color: green;
+
+}
+
+.guess-row {
+    display: flex;
+    justify-content: center;
+    gap: 5px 5px;
+    /* flex is just on the row - how can i put a gap between columns? */
+    margin: 2.5px 0;
+}
+
+p {
+    font-size: 30px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+div {
+    width: 80px;
+    height: 80px;
+    border: 1px solid lightgrey;
+    text-align: center;
+    /* font-family: 'Rubik Mono One', sans-serif; */
+}
+
+.partial-match {
+    background-color: goldenrod;
+}
+
+.match {
+    background-color: green;
+}
+
+.no-match {
+    background-color: grey;
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wordle</title>
+    <link rel="stylesheet" href="index.css">
+    <script defer src="validwords.js"></script>
+    <script defer src="wordle.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=Ubuntu+Condensed&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>
+                <span class="pink">W</span>
+                <span class="blue">O</span>
+                <span class="pink">R</span>
+                <span class="blue">D</span>
+                <span class="pink">L</span>
+                <span class="blue">E</span>
+
+            </h1>
+            <h2 id="error-message">let's play wordle!</h2>
+            <!-- <p>guess...</p> -->
+            <input id="guess-box" type="text" maxlength="5" style="text-transform:uppercase"/>
+        </header>
+        <section class="guess-row">
+            <div id="guess-1-letter-0"></div>
+            <div id="guess-1-letter-1"></div>
+            <div id="guess-1-letter-2"></div>
+            <div id="guess-1-letter-3"></div>
+            <div id="guess-1-letter-4"></div>
+        </section>
+        <section class="guess-row" id="guess-2">
+            <div class="letter-box" id="guess-2-letter-0"></div>
+            <div id="guess-2-letter-1"></div>
+            <div id="guess-2-letter-2"></div>
+            <div id="guess-2-letter-3"></div>
+            <div id="guess-2-letter-4"></div>
+        </section>
+        <section class="guess-row" id="guess-3">
+            <div class="letter-box" id="guess-3-letter-0"></div>
+            <div id="guess-3-letter-1"></div>
+            <div id="guess-3-letter-2"></div>
+            <div id="guess-3-letter-3"></div>
+            <div id="guess-3-letter-4"></div>
+        </section>
+        <section class="guess-row" id="guess-4">
+            <div class="letter-box" id="guess-4-letter-0"></div>
+            <div id="guess-4-letter-1"></div>
+            <div id="guess-4-letter-2"></div>
+            <div id="guess-4-letter-3"></div>
+            <div id="guess-4-letter-4"></div>
+        </section>
+        <section class="guess-row" id="guess-5">
+            <div class="letter-box" id="guess-5-letter-0"></div>
+            <div id="guess-5-letter-1"></div>
+            <div id="guess-5-letter-2"></div>
+            <div id="guess-5-letter-3"></div>
+            <div id="guess-5-letter-4"></div>
+        </section>
+        <section class="guess-row" id="guess-6">
+            <div class="letter-box" id="guess-6-letter-0"></div>
+            <div id="guess-6-letter-1"></div>
+            <div id="guess-6-letter-2"></div>
+            <div id="guess-6-letter-3"></div>
+            <div id="guess-6-letter-4"></div>
+        </section>
+        <footer>
+            <button id="refresh"></button>
+        </footer>
+    </main>
+</body>
+</html>

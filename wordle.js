@@ -12,6 +12,13 @@ function resetDuplicateWordleArray() {
     }
 }
 
+const buttonLocation = document.getElementById("refresh")
+buttonLocation.innerHTML = "Another Game?"
+buttonLocation.addEventListener('click', function() {
+    window.location.reload()
+})
+
+
 const guessLocation = document.getElementById("guess-box")
 const messageLocation = document.getElementById("error-message")
 let levelCounter = 1
@@ -22,9 +29,10 @@ let winStatus = ""
 guessLocation.addEventListener('keypress', function(e) {
     //when enter key is pressed, take value as guess
     if(e.key == 'Enter') {
+        messageLocation.innerHTML = ".........."
         userGuess = guessLocation.value.toUpperCase()
         if(userGuess.length < 5) {
-            messageLocation.innerHTML = "5 letters yeah?"
+            messageLocation.innerHTML = "try again with five letters"
             guessLocation.value = ""
         } else {
             console.log("firstUserGuess is " + userGuess)
@@ -42,7 +50,7 @@ guessLocation.addEventListener('keypress', function(e) {
                 }
                 levelCounter++
             } else {
-                messageLocation.innerHTML = "Do you need a dictionary?"
+                messageLocation.innerHTML = "do you need a dictionary?"
                 guessLocation.value = ""
             }
         }
@@ -78,9 +86,7 @@ function checkColours(userGuess, levelCounter) {
                     console.log("guess letter is " + guessLetter)
                     console.log("worldle dupe letter is " + wordleDupeLetter)
                     wordleArrayDupe[wordleArrayDupeLetterPositionCounter] = '.'
-                    
                     console.log("wordle dupe letter counter is " + wordleArrayDupeLetterPositionCounter)
-                    
                     console.log("yes it was yellow - " + guessLetter + " and the wordle dupe array is " + wordleArrayDupe)
                     break;
                 } 
@@ -97,14 +103,19 @@ function checkColours(userGuess, levelCounter) {
 
 function lose() {
     console.log("You lost... what are you playing at?")
-    messageLocation.innerHTML = "You lost... what are you playing at?"
+    messageLocation.innerHTML = "so close"
     guessLocation.disabled = true
     //add css styling for lose
 }
 
 function win() {
     console.log("You won... nice one you fricking genius!")
-    messageLocation.innerHTML = "You won... nice one you fricking genius!"
+    messageLocation.innerHTML = "nailed it!"
     guessLocation.disabled = true
     //add css styling for win
 }
+
+
+
+//dark mode button to change css
+//need array of legit wordle words

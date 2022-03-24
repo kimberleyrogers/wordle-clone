@@ -1,10 +1,15 @@
 //array of possible words - small to begin with
-const wordleArray = ['HELLO', 'RESET', 'BEACH', 'SHARK'];
+// const wordleArray = ['HELLO', 'RESET', 'BEACH', 'SHARK'];
 //randomly select a word from the array for today's word //split today's wordle into an array
-const todaysWordle = wordleArray[Math.floor(Math.random() * wordleArray.length)]
+const todaysWordle = wordleArray[Math.floor(Math.random() * wordleArray.length)].toUpperCase()
+// const todaysWordleBig = todaysWordle.toUpperCase()
+// console.log(todaysWordleBig)
+console.log(wordleArray)
 const todaysWordleArray = todaysWordle.split("")
 console.log("today's Wordle array: " + todaysWordleArray)
 let wordleArrayDupe = []
+
+// let wordleArrayDupe = [...todaysWordleArray]
 
 function resetDuplicateWordleArray() {
     for (i = 0; i < todaysWordleArray.length; i++) {
@@ -17,7 +22,6 @@ buttonLocation.innerHTML = "Another Game?"
 buttonLocation.addEventListener('click', function() {
     window.location.reload()
 })
-
 
 const guessLocation = document.getElementById("guess-box")
 const messageLocation = document.getElementById("error-message")
@@ -51,7 +55,7 @@ guessLocation.addEventListener('keypress', function(e) {
                 levelCounter++
             } else {
                 messageLocation.innerHTML = "do you need a dictionary?"
-                guessLocation.value = ""
+                // guessLocation.value = ""
             }
         }
     }
@@ -68,7 +72,7 @@ function checkColours(userGuess, levelCounter) {
 
     for (const guessLetter of userGuessArray) {
         console.log("guessLetter ", guessLetter)
-        
+        // const index = userGuessArray.indexOf(guessLetter)
         const location = document.getElementById("guess-" + levelCounter + "-letter-" + letterPositionCounter)
         location.innerHTML = guessLetter
 
@@ -78,10 +82,16 @@ function checkColours(userGuess, levelCounter) {
             wordleArrayDupe[letterPositionCounter] = '.'
             console.log("yes it was green - " + userGuessArray[letterPositionCounter] + " and the wordle dupe array is " + wordleArrayDupe)
             console.log(wordleArrayDupe[letterPositionCounter])
-        } else {
+        } 
+        letterPositionCounter++
+    }
+    letterPositionCounter = 0
+    for (const guessLetter of userGuessArray) {
             wordleArrayDupeLetterPositionCounter = 0
             for (let wordleDupeLetter of wordleArrayDupe) {
                 if(guessLetter == wordleDupeLetter) {
+                    console.log("userGuessArray is " + userGuessArray)
+                    const location = document.getElementById("guess-" + levelCounter + "-letter-" + letterPositionCounter)
                     location.classList.add('partial-match')
                     console.log("guess letter is " + guessLetter)
                     console.log("worldle dupe letter is " + wordleDupeLetter)
@@ -89,15 +99,15 @@ function checkColours(userGuess, levelCounter) {
                     console.log("wordle dupe letter counter is " + wordleArrayDupeLetterPositionCounter)
                     console.log("yes it was yellow - " + guessLetter + " and the wordle dupe array is " + wordleArrayDupe)
                     break;
-                } 
-                wordleArrayDupeLetterPositionCounter++
-            }
+            } 
+            wordleArrayDupeLetterPositionCounter++
         }
-        letterPositionCounter++
-        //check if guess was winning guess 
-        if(userGuess === todaysWordle){
-            win()
-        }
+        letterPositionCounter++ 
+    }
+    
+    //check if guess was winning guess 
+    if(userGuess === todaysWordle){
+        win()
     }
 }
 
@@ -116,6 +126,7 @@ function win() {
 }
 
 
-
 //dark mode button to change css
-//need array of legit wordle words
+//make the 'wordle' title dance on hover or on load
+//write the MD file
+//clean up console logs and html

@@ -14,7 +14,7 @@ header {
 }
 
 main {
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.8);
     width: 100%;
     display: grid;
 }
@@ -55,6 +55,7 @@ button {
     background-color: white;
     color: black;
     font-weight: bold;
+    margin-bottom: 200px;
 }
   
 button:hover {
@@ -66,7 +67,6 @@ button:hover {
     display: flex;
     justify-content: center;
     gap: 5px 5px;
-    /* flex is just on the row - how can i put a gap between columns? */
     margin: 2.5px 0;
 }
 
@@ -81,7 +81,7 @@ div {
     height: 80px;
     border: 1px solid lightgrey;
     text-align: center;
-    /* font-family: 'Rubik Mono One', sans-serif; */
+    background-color: black;
 }
 
 .partial-match {

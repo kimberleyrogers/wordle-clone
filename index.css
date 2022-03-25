@@ -59,7 +59,7 @@ button {
 }
   
 button:hover {
-    background-color: green;
+    background-color: rgb(231, 53, 172);
 
 }
 
@@ -94,4 +94,8 @@ div {
 
 .no-match {
     background-color: grey;
+}
+
+.alert {
+    color: rgb(0, 183, 255);
 }

@@ -27,6 +27,7 @@ guessLocation.addEventListener('keypress', function(e) {
         userGuess = guessLocation.value.toUpperCase()
         if(userGuess.length < 5) {
             messageLocation.innerHTML = "try again with five letters"
+            messageLocation.classList.toggle("alert")
             guessLocation.value = ""
         } else {
             if(validWords.includes(userGuess)) {
@@ -38,6 +39,7 @@ guessLocation.addEventListener('keypress', function(e) {
                 levelCounter++
             } else {
                 messageLocation.innerHTML = "do you need a dictionary?"
+                messageLocation.classList.toggle("alert")
             }
         }
     }
@@ -80,16 +82,17 @@ function checkColours(userGuess, levelCounter) {
 function lose() {
     messageLocation.innerHTML = "so close. the wordle was " + todaysWordle
     guessLocation.disabled = true
-    //add css styling for lose
+    messageLocation.classList.toggle("alert")
 }
 
 function win() {
     winStatus = 'win'
     messageLocation.innerHTML = "nailed it!"
     guessLocation.disabled = true
-    //add css styling for win
+    messageLocation.classList.toggle("alert")
 }
 
 //make the 'wordle' title dance on hover or on load
 //make the error/win/lose message dance when they appear
 //light mode button to change css
+//hard mode
